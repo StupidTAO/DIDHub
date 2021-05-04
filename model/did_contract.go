@@ -128,7 +128,7 @@ func ContractSetDidClaimHash(claimId, _didClaimHash string) error {
 		Value:  nil,
 	}, claimId, _didClaimHash)
 	if err != nil {
-		log.Fatalf("set did chain addr: %v \n", err)
+		log.Fatalf("set did claim: %v \n", err)
 		return err
 	}
 	fmt.Printf("tx sent: %s \n", tx.Hash().Hex())
@@ -182,7 +182,7 @@ func ContractSetDidDocumentHash(did, _didDocumentHash string) error {
 		Value:  nil,
 	}, did, _didDocumentHash)
 	if err != nil {
-		log.Fatalf("set did chain addr: %v \n", err)
+		log.Fatalf("set did document: %v \n", err)
 		return err
 	}
 	fmt.Printf("tx sent: %s \n", tx.Hash().Hex())
@@ -236,7 +236,7 @@ func ContractSetDidPublicKey(did, _didPublicKey string) error {
 		Value:  nil,
 	}, did, _didPublicKey)
 	if err != nil {
-		log.Fatalf("set did chain addr: %v \n", err)
+		log.Fatalf("set did public key: %v \n", err)
 		return err
 	}
 	fmt.Printf("tx sent: %s \n", tx.Hash().Hex())
@@ -292,7 +292,7 @@ func ContractSetTransaction(txId string, fromAddr string, toAddr string, amount 
 	}, txId, fromAddr, toAddr, big.NewInt(amount))
 
 	if err != nil {
-		log.Fatalf("set did chain addr: %v \n", err)
+		log.Fatalf("set transaciton err: %v \n", err)
 		return err
 	}
 	fmt.Printf("tx sent: %s \n", tx.Hash().Hex())
