@@ -6,19 +6,19 @@ import (
 )
 
 func InsertHubDIDDoc(didDoc DBDIDDoc) error {
-	//插入区块链
-	docsBytes := utils.GetSHA256HashCode([]byte(didDoc.DidDoc))
-	docs58 := utils.Base58Encode(docsBytes)
-	err := ContractSetDidDocumentHash(didDoc.Did, docs58)
+	//插入数据库
+	err := InsertDBDIDDoc(didDoc)
 	if err != nil {
-		fmt.Println("insert blockchain did documnet hahs error is ", err)
+		fmt.Println("insert db did documnet error is ", err)
 		return err
 	}
 
-	//插入数据库
-	err = InsertDBDIDDoc(didDoc)
+	//插入区块链
+	docsBytes := utils.GetSHA256HashCode([]byte(didDoc.DidDoc))
+	docs58 := utils.Base58Encode(docsBytes)
+	err = ContractSetDidDocumentHash(didDoc.Did, docs58)
 	if err != nil {
-		fmt.Println("insert db did documnet error is ", err)
+		fmt.Println("insert blockchain did documnet hahs error is ", err)
 		return err
 	}
 
@@ -54,19 +54,19 @@ func FindHubDIDDoc(did string) ([]DBDIDDoc, error) {
 }
 
 func InsertHubDIDClaim(didClaim DBDIDClaim) error {
-	//插入区块链
-	claimBytes := utils.GetSHA256HashCode([]byte(didClaim.DidClaim))
-	claim58 := utils.Base58Encode(claimBytes)
-	err := ContractSetDidClaimHash(didClaim.ClaimId, claim58)
+	//插入数据库
+	err := InsertDBDIDClaim(didClaim)
 	if err != nil {
-		fmt.Println("insert blockchain did claim hahs error is ", err)
+		fmt.Println("insert db did claim error is ", err)
 		return err
 	}
 
-	//插入数据库
-	err = InsertDBDIDClaim(didClaim)
+	//插入区块链
+	claimBytes := utils.GetSHA256HashCode([]byte(didClaim.DidClaim))
+	claim58 := utils.Base58Encode(claimBytes)
+	err = ContractSetDidClaimHash(didClaim.ClaimId, claim58)
 	if err != nil {
-		fmt.Println("insert db did claim error is ", err)
+		fmt.Println("insert blockchain did claim hahs error is ", err)
 		return err
 	}
 
@@ -102,17 +102,17 @@ func FindHubDIDClaim(claimId string) ([]DBDIDClaim, error) {
 }
 
 func InsertHubDIDPublicKey(didPublicKey DBDIDPublicKey) error {
-	//插入区块链
-	err := ContractSetDidPublicKey(didPublicKey.Did, didPublicKey.DidPublicKey)
+	//插入数据库
+	err := InsertDBDIDPublicKey(didPublicKey)
 	if err != nil {
-		fmt.Println("insert blockchain did public key error is ", err)
+		fmt.Println("insert db did public key  error is ", err)
 		return err
 	}
 
-	//插入数据库
-	err = InsertDBDIDPublicKey(didPublicKey)
+	//插入区块链
+	err = ContractSetDidPublicKey(didPublicKey.Did, didPublicKey.DidPublicKey)
 	if err != nil {
-		fmt.Println("insert db did public key  error is ", err)
+		fmt.Println("insert blockchain did public key error is ", err)
 		return err
 	}
 
@@ -148,17 +148,17 @@ func FindHubDIDPublicKey(did string) ([]DBDIDPublicKey, error) {
 }
 
 func InsertHubDIDChainAddr(didChainAddr DBDIDChainAddr) error {
-	//插入区块链
-	err := ContractSetDidChainAddr(didChainAddr.Did, didChainAddr.DidChainAddr)
+	//插入数据库
+	err := InsertDBDIDChainAddr(didChainAddr)
 	if err != nil {
-		fmt.Println("insert blockchain did chain addr error is ", err)
+		fmt.Println("insert db did chain addr error is ", err)
 		return err
 	}
 
-	//插入数据库
-	err = InsertDBDIDChainAddr(didChainAddr)
+	//插入区块链
+	err = ContractSetDidChainAddr(didChainAddr.Did, didChainAddr.DidChainAddr)
 	if err != nil {
-		fmt.Println("insert db did chain addr error is ", err)
+		fmt.Println("insert blockchain did chain addr error is ", err)
 		return err
 	}
 
@@ -194,17 +194,17 @@ func FindHubDIDChainAddr(did string) ([]DBDIDChainAddr, error) {
 }
 
 func InsertHubTransaction(tx Transaction) error {
-	//插入区块链
-	err := ContractSetTransaction(tx.TxId, tx.FromAddr, tx.ToAddr, int64(tx.Amount))
+	//插入数据库
+	err := InsertDBTransaction(&tx)
 	if err != nil {
-		fmt.Println("insert blockchain transaction error is ", err)
+		fmt.Println("insert db transaction error is ", err)
 		return err
 	}
 
-	//插入数据库
-	err = InsertDBTransaction(&tx)
+	//插入区块链
+	err = ContractSetTransaction(tx.TxId, tx.FromAddr, tx.ToAddr, int64(tx.Amount))
 	if err != nil {
-		fmt.Println("insert db transaction error is ", err)
+		fmt.Println("insert blockchain transaction error is ", err)
 		return err
 	}
 
