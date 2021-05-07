@@ -1,7 +1,9 @@
 package model
 
 import (
+	"errors"
 	"github.com/StupidTAO/DIDHub/contracts"
+	"github.com/StupidTAO/DIDHub/utils"
 	"log"
 	"fmt"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
@@ -13,7 +15,7 @@ import (
 
 const (
 	//投票合约
-	VOTE_CONTRACT_ADDRESS = "0xffDe2D76D23a3975207895eb58058AC8dfe0FBf1"
+	VOTE_CONTRACT_ADDRESS = "0x9c21dc02f4aac557f1630e03ec3516a10c0ff09b"
 )
 
 
@@ -98,7 +100,17 @@ func ContractGiveRightToVote(voter common.Address, number int64) error {
 	return nil
 }
 
-func ContractDelegate(to common.Address) error {
+func ContractDelegate(to common.Address, prk string) error {
+	//检查并获取私钥
+	if len(prk) < 64 {
+		return errors.New("private key content too short!")
+	}
+
+	pri, err := utils.GetPrivateKeyByString(prk)
+	if err != nil {
+		return err
+	}
+
 	blockchain, err := ethclient.Dial(URL)
 	if err != nil {
 		log.Fatalf("Unable to connect to network:%v \n", err)
@@ -111,11 +123,7 @@ func ContractDelegate(to common.Address) error {
 		return err
 	}
 
-	auth, err := bind.NewTransactor(strings.NewReader(KEY), PASSWORD)
-	if err != nil {
-		log.Fatalf("Failed to create authorized transactor:%v \n", err)
-		return err
-	}
+	auth := bind.NewKeyedTransactor(pri)
 
 	tx, err := contract.Delegate(&bind.TransactOpts{
 		From:   auth.From,
@@ -130,7 +138,17 @@ func ContractDelegate(to common.Address) error {
 	return nil
 }
 
-func ContractRevokeVote() error {
+func ContractRevokeVote(prk string) error {
+	//检查并获取私钥
+	if len(prk) < 64 {
+		return errors.New("private key content too short!")
+	}
+
+	pri, err := utils.GetPrivateKeyByString(prk)
+	if err != nil {
+		return err
+	}
+
 	blockchain, err := ethclient.Dial(URL)
 	if err != nil {
 		log.Fatalf("Unable to connect to network:%v \n", err)
@@ -143,11 +161,7 @@ func ContractRevokeVote() error {
 		return err
 	}
 
-	auth, err := bind.NewTransactor(strings.NewReader(KEY), PASSWORD)
-	if err != nil {
-		log.Fatalf("Failed to create authorized transactor:%v \n", err)
-		return err
-	}
+	auth := bind.NewKeyedTransactor(pri)
 
 	tx, err := contract.RevokeVote(&bind.TransactOpts{
 		From:   auth.From,
@@ -162,7 +176,17 @@ func ContractRevokeVote() error {
 	return nil
 }
 
-func ContractVote(proposal int64) error {
+func ContractVote(prk string, proposal int64) error {
+	//检查并获取私钥
+	if len(prk) < 64 {
+		return errors.New("private key content too short!")
+	}
+
+	pri, err := utils.GetPrivateKeyByString(prk)
+	if err != nil {
+		return err
+	}
+
 	blockchain, err := ethclient.Dial(URL)
 	if err != nil {
 		log.Fatalf("Unable to connect to network:%v \n", err)
@@ -175,11 +199,7 @@ func ContractVote(proposal int64) error {
 		return err
 	}
 
-	auth, err := bind.NewTransactor(strings.NewReader(KEY), PASSWORD)
-	if err != nil {
-		log.Fatalf("Failed to create authorized transactor:%v \n", err)
-		return err
-	}
+	auth := bind.NewKeyedTransactor(pri)
 
 	tx, err := contract.Vote(&bind.TransactOpts{
 		From:   auth.From,

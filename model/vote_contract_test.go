@@ -6,13 +6,22 @@ import (
 	"testing"
 )
 
+const (
+	PRIVATE_KEY_TEST = "a58c86588a45812a5e9fbb779b3993f3c1b220f213456d7c8a856892dd60f3cf"
+	ADDRESS_TEST = "0x087b8951a4161bAB2f474bE3fD28F9154a221D45"
+	PRIVATE_KEY_TEST1 = "237667a226cb4d605490a220ca18371f19e4b4a2efcf1a143a7a1f2c4d1db5ba"
+	ADDRESS_TEST1 = "0xDd6018c423634c59CD7b90146D51eC4e97Ac3D1d"
+	CHAIR_ADDRESS = "0x12769c3419a7f491cf4e576e2e983e009d579076"
+)
+
+
 func TestDeployVote(t *testing.T) {
 	//Contract pending deploy
 	deployVote()
 }
 
 func TestContractGiveRightToVote(t *testing.T) {
-	err := ContractGiveRightToVote(common.HexToAddress("0x087b8951a4161bAB2f474bE3fD28F9154a221D"), 100)
+	err := ContractGiveRightToVote(common.HexToAddress(ADDRESS_TEST1), 100)
 	if err != nil {
 		t.Error(err.Error())
 		return
@@ -20,7 +29,7 @@ func TestContractGiveRightToVote(t *testing.T) {
 }
 
 func TestContractDelegate(t *testing.T) {
-	err := ContractDelegate(common.HexToAddress("0x087b8951a4161bAB2f474bE3fD28F9154a221D"))
+	err := ContractDelegate(common.HexToAddress(CHAIR_ADDRESS), PRIVATE_KEY_TEST)
 	if err != nil {
 		t.Error(err.Error())
 		return
@@ -28,7 +37,7 @@ func TestContractDelegate(t *testing.T) {
 }
 
 func TestContractRevokeVote(t *testing.T) {
-	err := ContractRevokeVote()
+	err := ContractRevokeVote(PRIVATE_KEY_TEST1)
 	if err != nil {
 		t.Error(err.Error())
 		return
@@ -36,7 +45,7 @@ func TestContractRevokeVote(t *testing.T) {
 }
 
 func TestContractVote(t *testing.T) {
-	err := ContractVote(1)
+	err := ContractVote(PRIVATE_KEY_TEST1,1)
 	if err != nil {
 		t.Error(err.Error())
 		return
@@ -80,7 +89,7 @@ func TestContractProposals(t *testing.T) {
 }
 
 func TestContractVoters(t *testing.T) {
-	weight, voted, addr, vote, err := ContractVoters(common.HexToAddress("0x12769c3419A7f491CF4e576e2E983e009d579076"))
+	weight, voted, addr, vote, err := ContractVoters(common.HexToAddress(ADDRESS_TEST))
 	if err != nil {
 		t.Error(err.Error())
 		return
