@@ -208,7 +208,7 @@ func InsertHubTransaction(tx Transaction) error {
 		return err
 	}
 
-	fmt.Println("insert hub transaction sucess")
+	fmt.Println("insert hub transaction success")
 	return nil
 }
 
