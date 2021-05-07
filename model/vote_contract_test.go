@@ -94,5 +94,5 @@ func TestContractVoters(t *testing.T) {
 		t.Error(err.Error())
 		return
 	}
-	fmt.Printf("voter weight is: %d, voted is: %t, delegate is: %s, vote count is: %d\n", weight, voted, addr.Hex(), vote)
+	fmt.Printf("voter weight is: %d, voted is: %t, delegate is: %s, vote index is: %d\n", weight, voted, addr.Hex(), vote)
 }

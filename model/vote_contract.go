@@ -232,7 +232,7 @@ func ContractWinningProposal() (int64, error) {
 		log.Fatalf("get winning propaosal failed: %v \n", err)
 		return 65535, err
 	}
-	fmt.Printf("tx sent: %d \n", winningProposal_.Int64())
+	fmt.Printf("winning proposal index: %d \n", winningProposal_.Int64())
 	return winningProposal_.Int64(), nil
 }
 
