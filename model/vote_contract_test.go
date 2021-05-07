@@ -21,7 +21,7 @@ func TestDeployVote(t *testing.T) {
 }
 
 func TestContractGiveRightToVote(t *testing.T) {
-	err := ContractGiveRightToVote(common.HexToAddress(ADDRESS_TEST1), 100)
+	err := ContractGiveRightToVote(common.HexToAddress(ADDRESS_TEST), 100)
 	if err != nil {
 		t.Error(err.Error())
 		return
@@ -29,7 +29,7 @@ func TestContractGiveRightToVote(t *testing.T) {
 }
 
 func TestContractDelegate(t *testing.T) {
-	err := ContractDelegate(common.HexToAddress(CHAIR_ADDRESS), PRIVATE_KEY_TEST)
+	err := ContractDelegate(common.HexToAddress(ADDRESS_TEST1), PRIVATE_KEY_TEST)
 	if err != nil {
 		t.Error(err.Error())
 		return
@@ -37,7 +37,7 @@ func TestContractDelegate(t *testing.T) {
 }
 
 func TestContractRevokeVote(t *testing.T) {
-	err := ContractRevokeVote(PRIVATE_KEY_TEST1)
+	err := ContractRevokeVote(PRIVATE_KEY_TEST)
 	if err != nil {
 		t.Error(err.Error())
 		return
@@ -89,7 +89,7 @@ func TestContractProposals(t *testing.T) {
 }
 
 func TestContractVoters(t *testing.T) {
-	weight, voted, addr, vote, err := ContractVoters(common.HexToAddress("0xc3aDbe2E76b7e0586Ab978716B5a4ab1345836Da"))
+	weight, voted, addr, vote, err := ContractVoters(common.HexToAddress(ADDRESS_TEST))
 	if err != nil {
 		t.Error(err.Error())
 		return
