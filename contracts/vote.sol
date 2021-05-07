@@ -101,18 +101,19 @@ contract Vote {
         Voter storage sender = voters[msg.sender];
         Voter storage delegate_ = voters[sender.delegate];
         if (sender.voted) {
-            //1.设置代理的情况
-            if (delegate_.voted) {
-                // 若被委托者已经投过票了，直接减去得票数
-                proposals[delegate_.vote].voteCount -= sender.weight;
-                delegate_.weight -= sender.weight;
-            } else {
-                // 若被委托者还没投票，减去委托者的权重
-                delegate_.weight -= sender.weight;
-            }
-            //2.直接投票的情况
             if (sender.delegate == address(0)) {
-                proposals[delegate_.vote].voteCount -= sender.weight;
+                //1.直接投票的情况
+                proposals[sender.vote].voteCount -= sender.weight;
+            } else {
+                //2.设置代理的情况
+                if (delegate_.voted) {
+                    // 若被委托者已经投过票了，直接减去得票数
+                    proposals[delegate_.vote].voteCount -= sender.weight;
+                    delegate_.weight -= sender.weight;
+                } else {
+                    // 若被委托者还没投票，减去委托者的权重
+                    delegate_.weight -= sender.weight;
+                }
             }
 
             //修改sender的基本设置
