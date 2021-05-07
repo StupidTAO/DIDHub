@@ -73,7 +73,7 @@ func ContractGiveRightToVote(voter common.Address, number int64) error {
 		return err
 	}
 
-	contract, err := contracts.NewVote(common.HexToAddress(CONTRACT_ADDRESS), blockchain)
+	contract, err := contracts.NewVote(common.HexToAddress(VOTE_CONTRACT_ADDRESS), blockchain)
 	if err != nil {
 		log.Fatalf("conn contract: %v \n", err)
 		return err
@@ -105,7 +105,7 @@ func ContractDelegate(to common.Address) error {
 		return err
 	}
 
-	contract, err := contracts.NewVote(common.HexToAddress(CONTRACT_ADDRESS), blockchain)
+	contract, err := contracts.NewVote(common.HexToAddress(VOTE_CONTRACT_ADDRESS), blockchain)
 	if err != nil {
 		log.Fatalf("conn contract: %v \n", err)
 		return err
@@ -137,7 +137,7 @@ func ContractRevokeVote() error {
 		return err
 	}
 
-	contract, err := contracts.NewVote(common.HexToAddress(CONTRACT_ADDRESS), blockchain)
+	contract, err := contracts.NewVote(common.HexToAddress(VOTE_CONTRACT_ADDRESS), blockchain)
 	if err != nil {
 		log.Fatalf("conn contract: %v \n", err)
 		return err
@@ -169,7 +169,7 @@ func ContractVote(proposal int64) error {
 		return err
 	}
 
-	contract, err := contracts.NewVote(common.HexToAddress(CONTRACT_ADDRESS), blockchain)
+	contract, err := contracts.NewVote(common.HexToAddress(VOTE_CONTRACT_ADDRESS), blockchain)
 	if err != nil {
 		log.Fatalf("conn contract: %v \n", err)
 		return err
@@ -201,7 +201,7 @@ func ContractWinningProposal() (int64, error) {
 		return 65535, err
 	}
 
-	contract, err := contracts.NewVote(common.HexToAddress(CONTRACT_ADDRESS), blockchain)
+	contract, err := contracts.NewVote(common.HexToAddress(VOTE_CONTRACT_ADDRESS), blockchain)
 	if err != nil {
 		log.Fatalf("conn contract: %v \n", err)
 		return 65535, err
@@ -223,7 +223,7 @@ func ContractWinnerName() (string, error) {
 		return "", err
 	}
 
-	contract, err := contracts.NewVote(common.HexToAddress(CONTRACT_ADDRESS), blockchain)
+	contract, err := contracts.NewVote(common.HexToAddress(VOTE_CONTRACT_ADDRESS), blockchain)
 	if err != nil {
 		log.Fatalf("conn contract: %v \n", err)
 		return "", err
@@ -245,7 +245,7 @@ func ContractChairperson() (string, error) {
 		return "", err
 	}
 
-	contract, err := contracts.NewVote(common.HexToAddress(CONTRACT_ADDRESS), blockchain)
+	contract, err := contracts.NewVote(common.HexToAddress(VOTE_CONTRACT_ADDRESS), blockchain)
 	if err != nil {
 		log.Fatalf("conn contract: %v \n", err)
 		return "", err
@@ -267,7 +267,7 @@ func ContractProposals(index int64) (string, int64, error) {
 		return "", 0, err
 	}
 
-	contract, err := contracts.NewVote(common.HexToAddress(CONTRACT_ADDRESS), blockchain)
+	contract, err := contracts.NewVote(common.HexToAddress(VOTE_CONTRACT_ADDRESS), blockchain)
 	if err != nil {
 		log.Fatalf("conn contract: %v \n", err)
 		return "", 0,  err
@@ -289,7 +289,7 @@ func ContractVoters(addr common.Address) (int64, bool, common.Address, int64, er
 		return 0, false, common.Address{}, 0, err
 	}
 
-	contract, err := contracts.NewVote(common.HexToAddress(CONTRACT_ADDRESS), blockchain)
+	contract, err := contracts.NewVote(common.HexToAddress(VOTE_CONTRACT_ADDRESS), blockchain)
 	if err != nil {
 		log.Fatalf("conn contract: %v \n", err)
 		return 0, false, common.Address{}, 0, err
