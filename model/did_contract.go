@@ -15,7 +15,7 @@ const (
 	KEY = `{"address":"12769c3419a7f491cf4e576e2e983e009d579076","crypto":{"cipher":"aes-128-ctr","ciphertext":"215430a18ab1132c6eaecdf966bc0d878a3be06cff5dce173d801afec5002db5","cipherparams":{"iv":"d41d87954da3dfca1f38e14111169fb8"},"kdf":"scrypt","kdfparams":{"dklen":32,"n":262144,"p":1,"r":8,"salt":"d5268e70fbf8666435bf82ee53850f14486810f1944110de2aede933ae97fff1"},"mac":"a80e95fc657473f543bb989da9e8e2cde73e2b8bde52e6b05355b44a40c165ec"},"id":"5e034459-6e81-4208-9e26-c91641d20f5d","version":3}`
 	PASSWORD = "abc"
 	URL = "http://127.0.0.1:7545"
-	CONTRACT_ADDRESS = "0xf8ee6a79a45423e20bfa2eb467db344b3ef35a68"
+	CONTRACT_ADDRESS = "0xa252df5c19e6b2bbfd1308b6c0d8e0430a134ce3"
 )
 
 func deploy() (error) {
