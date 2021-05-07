@@ -100,18 +100,26 @@ contract Vote {
     function revokeVote() public {
         Voter storage sender = voters[msg.sender];
         Voter storage delegate_ = voters[sender.delegate];
-        if (delegate_.voted) {
-            // 若被委托者已经投过票了，直接减去得票数
-            proposals[delegate_.vote].voteCount -= sender.weight;
+        if (sender.voted) {
+            //1.设置代理的情况
+            if (delegate_.voted) {
+                // 若被委托者已经投过票了，直接减去得票数
+                proposals[delegate_.vote].voteCount -= sender.weight;
+                delegate_.weight -= sender.weight;
+            } else {
+                // 若被委托者还没投票，减去委托者的权重
+                delegate_.weight -= sender.weight;
+            }
+            //2.直接投票的情况
+            if (sender.delegate == address(0)) {
+                proposals[delegate_.vote].voteCount -= sender.weight;
+            }
+
+            //修改sender的基本设置
+            sender.voted = false;
+            sender.delegate = address(0);
+            sender.vote = 0;
         }
-        // 若被委托者还没投票，减去委托者的权重
-        delegate_.weight -= sender.weight;
-
-        //修改sender的基本设置
-        sender.voted = false;
-        sender.delegate = address(0);
-        sender.vote = 0;
-
     }
 
     /// 把你的票(包括委托给你的票)，

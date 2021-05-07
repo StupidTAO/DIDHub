@@ -89,7 +89,7 @@ func TestContractProposals(t *testing.T) {
 }
 
 func TestContractVoters(t *testing.T) {
-	weight, voted, addr, vote, err := ContractVoters(common.HexToAddress(ADDRESS_TEST))
+	weight, voted, addr, vote, err := ContractVoters(common.HexToAddress("0xc3aDbe2E76b7e0586Ab978716B5a4ab1345836Da"))
 	if err != nil {
 		t.Error(err.Error())
 		return

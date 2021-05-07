@@ -169,7 +169,7 @@ func ContractRevokeVote(prk string) error {
 		Value:  nil,
 	})
 	if err != nil {
-		log.Fatalf("delegate ticket right failed: %v \n", err)
+		log.Fatalf("revoke ticket failed: %v \n", err)
 		return err
 	}
 	fmt.Printf("tx sent: %s \n", tx.Hash().Hex())
@@ -207,7 +207,7 @@ func ContractVote(prk string, proposal int64) error {
 		Value:  nil,
 	}, big.NewInt(proposal))
 	if err != nil {
-		log.Fatalf("delegate ticket right failed: %v \n", err)
+		log.Fatalf("vote ticket failed: %v \n", err)
 		return err
 	}
 	fmt.Printf("tx sent: %s \n", tx.Hash().Hex())
@@ -229,7 +229,7 @@ func ContractWinningProposal() (int64, error) {
 
 	winningProposal_, err := contract.WinningProposal(&bind.CallOpts{Pending: true})
 	if err != nil {
-		log.Fatalf("delegate ticket right failed: %v \n", err)
+		log.Fatalf("get winning propaosal failed: %v \n", err)
 		return 65535, err
 	}
 	fmt.Printf("tx sent: %d \n", winningProposal_.Int64())
@@ -251,7 +251,7 @@ func ContractWinnerName() (string, error) {
 
 	winnerName, err := contract.WinnerName(&bind.CallOpts{Pending: true})
 	if err != nil {
-		log.Fatalf("delegate ticket right failed: %v \n", err)
+		log.Fatalf("get winner name failed: %v \n", err)
 		return "", err
 	}
 
@@ -273,7 +273,7 @@ func ContractChairperson() (string, error) {
 
 	chairAddr, err := contract.Chairperson(&bind.CallOpts{Pending: true})
 	if err != nil {
-		log.Fatalf("delegate ticket right failed: %v \n", err)
+		log.Fatalf("get chair person: %v \n", err)
 		return "", err
 	}
 
@@ -295,7 +295,7 @@ func ContractProposals(index int64) (string, int64, error) {
 
 	proposal, err := contract.Proposals(&bind.CallOpts{Pending: true}, big.NewInt(index))
 	if err != nil {
-		log.Fatalf("delegate ticket right failed: %v \n", err)
+		log.Fatalf("get propaosal failed: %v \n", err)
 		return "", 0,  err
 	}
 
@@ -317,7 +317,7 @@ func ContractVoters(addr common.Address) (int64, bool, common.Address, int64, er
 
 	voter, err := contract.Voters(&bind.CallOpts{Pending: true}, addr)
 	if err != nil {
-		log.Fatalf("delegate ticket right failed: %v \n", err)
+		log.Fatalf("get voter failed: %v \n", err)
 		return 0, false, common.Address{}, 0, err
 	}
 
