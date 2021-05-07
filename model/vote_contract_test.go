@@ -80,16 +80,16 @@ func TestContractChairperson(t *testing.T) {
 }
 
 func TestContractProposals(t *testing.T) {
-	name, count, err := ContractProposals(1)
+	name, count, needFunds, err := ContractProposals(1)
 	if err != nil {
 		t.Error(err.Error())
 		return
 	}
-	fmt.Printf("proposal name is: %s, voted count is: %d\n", name, count)
+	fmt.Printf("proposal name is: %s, voted count is: %d, proposal need funds is: %d\n", name, count, needFunds)
 }
 
 func TestContractVoters(t *testing.T) {
-	weight, voted, addr, vote, err := ContractVoters(common.HexToAddress(ADDRESS_TEST))
+	weight, voted, addr, vote, err := ContractVoters(common.HexToAddress("0x21BEd1452BAf5D5a952dde3F2f8Eb6c3a5be798b"))
 	if err != nil {
 		t.Error(err.Error())
 		return

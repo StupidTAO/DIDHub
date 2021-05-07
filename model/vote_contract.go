@@ -280,26 +280,26 @@ func ContractChairperson() (string, error) {
 	return chairAddr.Hex(), nil
 }
 
-func ContractProposals(index int64) (string, int64, error) {
+func ContractProposals(index int64) (string, int64, int64, error) {
 	blockchain, err := ethclient.Dial(URL)
 	if err != nil {
 		log.Fatalf("Unable to connect to network:%v \n", err)
-		return "", 0, err
+		return "", 0, 0, err
 	}
 
 	contract, err := contracts.NewVote(common.HexToAddress(VOTE_CONTRACT_ADDRESS), blockchain)
 	if err != nil {
 		log.Fatalf("conn contract: %v \n", err)
-		return "", 0,  err
+		return "", 0, 0, err
 	}
 
 	proposal, err := contract.Proposals(&bind.CallOpts{Pending: true}, big.NewInt(index))
 	if err != nil {
 		log.Fatalf("get propaosal failed: %v \n", err)
-		return "", 0,  err
+		return "", 0, 0, err
 	}
 
-	return string(proposal.Name[:]), proposal.VoteCount.Int64(), nil
+	return string(proposal.Name[:]), proposal.VoteCount.Int64(), proposal.Funds.Int64(), nil
 }
 
 func ContractVoters(addr common.Address) (int64, bool, common.Address, int64, error) {
