@@ -221,3 +221,21 @@ func FindDBTransaction(txId string) ([]Transaction, error){
 	}
 	return txs, nil
 }
+
+func GetWelfareToken(fromAddr string) (float32, error) {
+	DB := db.InitDB()
+
+	var txs []Transaction
+	var sql = "select id, txId, fromAddr, toAddr, payload, amount, projectPriority, contribution, createTime, updateTime, hasCaculate from transactions where fromAddr=?"
+	err := DB.Select(&txs, sql, fromAddr)
+	if err != nil {
+		fmt.Println("exec failed, ", err)
+		return 0, err
+	}
+	var token float32
+	for i := 0; i < len(txs); i++ {
+		token += txs[i].Contribution
+	}
+
+	return token, nil
+}

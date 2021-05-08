@@ -131,3 +131,13 @@ func TestFindTransaction(t *testing.T) {
 	}
 	t.Log("len txs is ", len(txs))
 }
+
+func TestGetWelfareToken(t *testing.T) {
+	fromAddr := "did:welfare:3rwXEnN4PRQ11QBiDbtGQYBGwGea"
+	welfareToken, err := GetWelfareToken(fromAddr)
+	if err != nil {
+		t.Error("get welfare token error ", err)
+		return
+	}
+	t.Log("welfare token", welfareToken)
+}
