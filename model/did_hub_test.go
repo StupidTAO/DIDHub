@@ -28,7 +28,7 @@ func TestFindHubDIDDoc (t *testing.T) {
 	if err != nil {
 		t.Error("error is ", err)
 	}
-	log.Info(len(docs))
+	fmt.Println(len(docs))
 }
 
 func TestInsertHubDIDClaim(t *testing.T) {
@@ -53,7 +53,7 @@ func TestFindHubDIDClaim (t *testing.T) {
 	if err != nil {
 		t.Error("error is ", err)
 	}
-	log.Info(len(claims))
+	fmt.Println(len(claims))
 }
 
 func TestInsertHubDIDPublicKey(t *testing.T) {
@@ -75,7 +75,7 @@ func TestFindHubDIDPublicKey (t *testing.T) {
 	if err != nil {
 		t.Error("error is ", err)
 	}
-	log.Info(len(claims))
+	fmt.Println(len(claims))
 }
 
 func TestInsertHubDIDChainAddr(t *testing.T) {
@@ -97,7 +97,7 @@ func TestFindHubDIDChainAddr (t *testing.T) {
 	if err != nil {
 		t.Error("error is ", err)
 	}
-	log.Info(len(chainAddrs))
+	fmt.Println(len(chainAddrs))
 }
 
 func TestInsertHubTransaction(t *testing.T) {
@@ -127,5 +127,5 @@ func TestFindHubTransaciton (t *testing.T) {
 	if err != nil {
 		t.Error("error is ", err)
 	}
-	log.Info(len(txs))
+	fmt.Println(len(txs))
 }

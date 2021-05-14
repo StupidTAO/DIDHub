@@ -3,8 +3,8 @@ package model
 import (
 	"errors"
 	"github.com/StupidTAO/DIDHub/contracts"
-	"github.com/StupidTAO/DIDHub/utils"
 	"github.com/StupidTAO/DIDHub/log"
+	"github.com/StupidTAO/DIDHub/utils"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"

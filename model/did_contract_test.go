@@ -28,7 +28,7 @@ func TestContractFindDidChainAddr(t *testing.T) {
 		t.Error(err.Error())
 		return
 	}
-	log.Info(ethAddress)
+	fmt.Println(ethAddress)
 }
 
 
@@ -46,7 +46,7 @@ func TestContractFindDidClaimHash(t *testing.T) {
 		t.Error(err.Error())
 		return
 	}
-	log.Info(claimHash)
+	fmt.Println(claimHash)
 }
 
 func TestContractSetDidDocumentHash(t *testing.T) {
@@ -63,7 +63,7 @@ func TestContractFindDidDocumentHash(t *testing.T) {
 		t.Error(err.Error())
 		return
 	}
-	log.Info(claimHash)
+	fmt.Println(claimHash)
 }
 
 func TestContractSetDidPublicKey(t *testing.T) {
@@ -80,7 +80,7 @@ func TestContractFindDidPublicKey(t *testing.T) {
 		t.Error(err.Error())
 		return
 	}
-	log.Info(publicKey)
+	fmt.Println(publicKey)
 }
 
 func TestContractSetTransaction(t *testing.T) {
@@ -97,7 +97,7 @@ func TestContractFindTransaction(t *testing.T) {
 		t.Error(err.Error())
 		return
 	}
-	log.Info(from)
-	log.Info(to)
-	log.Info(amount)
+	fmt.Println(from)
+	fmt.Println(to)
+	fmt.Println(amount)
 }

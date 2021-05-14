@@ -10,7 +10,7 @@ func InsertHubDIDDoc(didDoc DBDIDDoc) error {
 	//插入数据库
 	err := InsertDBDIDDoc(didDoc)
 	if err != nil {
-		log.Info("insert db did documnet error is ", err)
+		log.Info("insert db did documnet error is %s", err.Error())
 		return err
 	}
 
@@ -19,7 +19,7 @@ func InsertHubDIDDoc(didDoc DBDIDDoc) error {
 	docs58 := utils.Base58Encode(docsBytes)
 	err = ContractSetDidDocumentHash(didDoc.Did, docs58)
 	if err != nil {
-		log.Info("insert blockchain did documnet hahs error is ", err)
+		log.Info("insert blockchain did documnet hahs error is %s", err.Error())
 		return err
 	}
 
@@ -30,7 +30,7 @@ func InsertHubDIDDoc(didDoc DBDIDDoc) error {
 func FindHubDIDDoc(did string) ([]DBDIDDoc, error) {
 	docs, err := FindDBDIDDoc(did)
 	if err != nil {
-		log.Info("find db did documnet error is ", err)
+		log.Info("find db did documnet error is %s", err.Error())
 		return nil, err
 	}
 
@@ -40,7 +40,7 @@ func FindHubDIDDoc(did string) ([]DBDIDDoc, error) {
 
 	docHash, err := ContractFindDidDocumentHash(did)
 	if err != nil {
-		log.Info("find blockchain did documnet error is ", err)
+		log.Info("find blockchain did documnet error is %s", err.Error())
 		return nil, err
 	}
 
@@ -58,7 +58,7 @@ func InsertHubDIDClaim(didClaim DBDIDClaim) error {
 	//插入数据库
 	err := InsertDBDIDClaim(didClaim)
 	if err != nil {
-		log.Info("insert db did claim error is ", err)
+		log.Info("insert db did claim error is %s", err.Error())
 		return err
 	}
 
@@ -67,7 +67,7 @@ func InsertHubDIDClaim(didClaim DBDIDClaim) error {
 	claim58 := utils.Base58Encode(claimBytes)
 	err = ContractSetDidClaimHash(didClaim.ClaimId, claim58)
 	if err != nil {
-		log.Info("insert blockchain did claim hahs error is ", err)
+		log.Info("insert blockchain did claim hahs error is %s", err.Error())
 		return err
 	}
 
@@ -78,7 +78,7 @@ func InsertHubDIDClaim(didClaim DBDIDClaim) error {
 func FindHubDIDClaim(claimId string) ([]DBDIDClaim, error) {
 	claims, err := FindDBDIDClaim(claimId)
 	if err != nil {
-		log.Info("find db did claim error is ", err)
+		log.Info("find db did claim error is %s", err.Error())
 		return nil, err
 	}
 
@@ -88,7 +88,7 @@ func FindHubDIDClaim(claimId string) ([]DBDIDClaim, error) {
 
 	claimHash, err := ContractFindDidClaimHash(claimId)
 	if err != nil {
-		log.Info("find blockchain did documnet error is ", err)
+		log.Info("find blockchain did documnet error is %s", err.Error())
 		return nil, err
 	}
 
@@ -106,14 +106,14 @@ func InsertHubDIDPublicKey(didPublicKey DBDIDPublicKey) error {
 	//插入数据库
 	err := InsertDBDIDPublicKey(didPublicKey)
 	if err != nil {
-		log.Info("insert db did public key  error is ", err)
+		log.Info("insert db did public key  error is %s", err.Error())
 		return err
 	}
 
 	//插入区块链
 	err = ContractSetDidPublicKey(didPublicKey.Did, didPublicKey.DidPublicKey)
 	if err != nil {
-		log.Info("insert blockchain did public key error is ", err)
+		log.Info("insert blockchain did public key error is %s", err.Error())
 		return err
 	}
 
@@ -125,7 +125,7 @@ func FindHubDIDPublicKey(did string) ([]DBDIDPublicKey, error) {
 	//读取数据库中的内容
 	publicKeys, err := FindDBDIDPublicKey(did)
 	if err != nil {
-		log.Info("find db did public key error is ", err)
+		log.Info("find db did public key error is %s", err.Error())
 		return nil, err
 	}
 
@@ -136,7 +136,7 @@ func FindHubDIDPublicKey(did string) ([]DBDIDPublicKey, error) {
 	//读取blockchain内容
 	publicKey, err := ContractFindDidPublicKey(did)
 	if err != nil {
-		log.Info("find blockchain did public key error is ", err)
+		log.Info("find blockchain did public key error is %s", err.Error())
 		return nil, err
 	}
 
@@ -152,14 +152,14 @@ func InsertHubDIDChainAddr(didChainAddr DBDIDChainAddr) error {
 	//插入数据库
 	err := InsertDBDIDChainAddr(didChainAddr)
 	if err != nil {
-		log.Info("insert db did chain addr error is ", err)
+		log.Info("insert db did chain addr error is %s", err.Error())
 		return err
 	}
 
 	//插入区块链
 	err = ContractSetDidChainAddr(didChainAddr.Did, didChainAddr.DidChainAddr)
 	if err != nil {
-		log.Info("insert blockchain did chain addr error is ", err)
+		log.Info("insert blockchain did chain addr error is %s", err.Error())
 		return err
 	}
 
@@ -171,7 +171,7 @@ func FindHubDIDChainAddr(did string) ([]DBDIDChainAddr, error) {
 	//读取数据库中的内容
 	chainAddrs, err := FindDBDIDChainAddr(did)
 	if err != nil {
-		log.Info("find db did chain addr error is ", err)
+		log.Info("find db did chain addr error is %s", err.Error())
 		return nil, err
 	}
 
@@ -182,7 +182,7 @@ func FindHubDIDChainAddr(did string) ([]DBDIDChainAddr, error) {
 	//读取blockchain内容
 	chainAddr, err := ContractFindDidChainAddr(did)
 	if err != nil {
-		log.Info("find blockchain did public key error is ", err)
+		log.Info("find blockchain did public key error is %s", err.Error())
 		return nil, err
 	}
 
@@ -198,14 +198,14 @@ func InsertHubTransaction(tx Transaction) error {
 	//插入数据库
 	err := InsertDBTransaction(&tx)
 	if err != nil {
-		log.Info("insert db transaction error is ", err)
+		log.Info("insert db transaction error is %s", err.Error())
 		return err
 	}
 
 	//插入区块链
 	err = ContractSetTransaction(tx.TxId, tx.FromAddr, tx.ToAddr, int64(tx.Amount))
 	if err != nil {
-		log.Info("insert blockchain transaction error is ", err)
+		log.Info("insert blockchain transaction error is %s", err.Error())
 		return err
 	}
 
@@ -217,7 +217,7 @@ func FindHubTranaction(txId string) ([]Transaction, error) {
 	//读取数据库中的内容
 	txs, err := FindDBTransaction(txId)
 	if err != nil {
-		log.Info("find db transaction error is ", err)
+		log.Info("find db transaction error is %s", err.Error())
 		return nil, err
 	}
 
@@ -228,7 +228,7 @@ func FindHubTranaction(txId string) ([]Transaction, error) {
 	//读取blockchain内容
 	fromAddr, toAddr, amount, err := ContractFindTransaction(txId)
 	if err != nil {
-		log.Info("find blockchain transaction error is ", err)
+		log.Info("find blockchain transaction error is %s", err.Error())
 		return nil, err
 	}
 

@@ -4,11 +4,13 @@
     <list default="true" id="2f9085de-f600-43c6-996f-81da3cab4541" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/connect.go" beforeDir="false" afterPath="$PROJECT_DIR$/db/connect.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/api.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/api.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/did_contract_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/did_contract_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/did_db.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/did_db.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/did_hub.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/did_hub.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/did_hub_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/did_hub_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/hash_code_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/utils/hash_code_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/vote_contract.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/vote_contract.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/vote_contract_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/vote_contract_test.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,8 +57,8 @@
       <recent name="$PROJECT_DIR$/model" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Test.TestInfo in github.com/StupidTAO/DIDHub/log">
-    <configuration name="TestFindHubDIDChainAddr in github.com/StupidTAO/DIDHub/model (2)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Go Test.TestContractVoters in github.com/StupidTAO/DIDHub/model (1)">
+    <configuration name="TestContractVoters in github.com/StupidTAO/DIDHub/model (1)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="DIDHub" />
       <working_directory value="$PROJECT_DIR$/model" />
       <framework value="gotest" />
@@ -64,10 +66,10 @@
       <package value="github.com/StupidTAO/DIDHub/model" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestFindHubDIDChainAddr\E$" />
+      <pattern value="^\QTestContractVoters\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestFindHubDIDChainAddr in github.com/StupidTAO/DIDHub/model (3)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestContractVoters in github.com/StupidTAO/DIDHub/model" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="DIDHub" />
       <working_directory value="$PROJECT_DIR$/model" />
       <framework value="gotest" />
@@ -75,10 +77,10 @@
       <package value="github.com/StupidTAO/DIDHub/model" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestFindHubDIDChainAddr\E$" />
+      <pattern value="^\QTestContractVoters\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestFindHubDIDChainAddr in github.com/StupidTAO/DIDHub/model (4)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestContractWinningProposal in github.com/StupidTAO/DIDHub/model" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="DIDHub" />
       <working_directory value="$PROJECT_DIR$/model" />
       <framework value="gotest" />
@@ -86,7 +88,18 @@
       <package value="github.com/StupidTAO/DIDHub/model" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestFindHubDIDChainAddr\E$" />
+      <pattern value="^\QTestContractWinningProposal\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestGetWelfareToken in github.com/StupidTAO/DIDHub/model (1)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="DIDHub" />
+      <working_directory value="$PROJECT_DIR$/model" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/StupidTAO/DIDHub/model" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestGetWelfareToken\E$" />
       <method v="2" />
     </configuration>
     <configuration name="TestGetWelfareToken in github.com/StupidTAO/DIDHub/model" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
@@ -100,24 +113,13 @@
       <pattern value="^\QTestGetWelfareToken\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestInfo in github.com/StupidTAO/DIDHub/log" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="DIDHub" />
-      <working_directory value="$PROJECT_DIR$/log" />
-      <framework value="gotest" />
-      <kind value="PACKAGE" />
-      <package value="github.com/StupidTAO/DIDHub/log" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestInfo\E$" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Test.TestInfo in github.com/StupidTAO/DIDHub/log" />
+        <item itemvalue="Go Test.TestContractVoters in github.com/StupidTAO/DIDHub/model (1)" />
+        <item itemvalue="Go Test.TestContractWinningProposal in github.com/StupidTAO/DIDHub/model" />
+        <item itemvalue="Go Test.TestGetWelfareToken in github.com/StupidTAO/DIDHub/model (1)" />
         <item itemvalue="Go Test.TestGetWelfareToken in github.com/StupidTAO/DIDHub/model" />
-        <item itemvalue="Go Test.TestFindHubDIDChainAddr in github.com/StupidTAO/DIDHub/model (4)" />
-        <item itemvalue="Go Test.TestFindHubDIDChainAddr in github.com/StupidTAO/DIDHub/model (3)" />
-        <item itemvalue="Go Test.TestFindHubDIDChainAddr in github.com/StupidTAO/DIDHub/model (2)" />
+        <item itemvalue="Go Test.TestContractVoters in github.com/StupidTAO/DIDHub/model" />
       </list>
     </recent_temporary>
   </component>
@@ -137,25 +139,25 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state width="765" height="646" key="DebuggerActiveHint/0.0.1792.1120@0.0.1792.1120" timestamp="1620109570067" />
-    <state width="1750" height="313" key="GridCell.Tab.0.bottom" timestamp="1620982228567">
+    <state width="1750" height="313" key="GridCell.Tab.0.bottom" timestamp="1620983946168">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="313" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1620982228567" />
+    <state width="1750" height="313" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1620983946168" />
     <state width="1750" height="313" key="GridCell.Tab.0.bottom/0.23.1792.997@0.23.1792.997" timestamp="1620974523974" />
-    <state width="1750" height="313" key="GridCell.Tab.0.center" timestamp="1620982228565">
+    <state width="1750" height="313" key="GridCell.Tab.0.center" timestamp="1620983946166">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="313" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1620982228565" />
+    <state width="1750" height="313" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1620983946166" />
     <state width="1750" height="313" key="GridCell.Tab.0.center/0.23.1792.997@0.23.1792.997" timestamp="1620974523972" />
-    <state width="1750" height="313" key="GridCell.Tab.0.left" timestamp="1620982228564">
+    <state width="1750" height="313" key="GridCell.Tab.0.left" timestamp="1620983946165">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="313" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1620982228564" />
+    <state width="1750" height="313" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1620983946165" />
     <state width="1750" height="313" key="GridCell.Tab.0.left/0.23.1792.997@0.23.1792.997" timestamp="1620974523971" />
-    <state width="1750" height="313" key="GridCell.Tab.0.right" timestamp="1620982228566">
+    <state width="1750" height="313" key="GridCell.Tab.0.right" timestamp="1620983946167">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="313" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1620982228566" />
+    <state width="1750" height="313" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1620983946167" />
     <state width="1750" height="313" key="GridCell.Tab.0.right/0.23.1792.997@0.23.1792.997" timestamp="1620974523973" />
     <state width="1750" height="271" key="GridCell.Tab.1.bottom" timestamp="1620978608012">
       <screen x="0" y="0" width="1792" height="1120" />
