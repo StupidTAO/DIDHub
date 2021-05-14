@@ -3,6 +3,7 @@ package model
 import (
 	"fmt"
 	"github.com/StupidTAO/DIDHub/utils"
+	"log"
 )
 
 func InsertHubDIDDoc(didDoc DBDIDDoc) error {
@@ -22,7 +23,7 @@ func InsertHubDIDDoc(didDoc DBDIDDoc) error {
 		return err
 	}
 
-	fmt.Println("did doc insert did hub sucess")
+	log.Println("did doc insert did hub sucess")
 	return nil
 }
 
