@@ -1,12 +1,11 @@
 package model
 
 import (
-	"fmt"
 	"github.com/StupidTAO/DIDHub/contracts"
+	"github.com/StupidTAO/DIDHub/log"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
-	"log"
 	"math/big"
 	"strings"
 )
@@ -21,28 +20,28 @@ const (
 func deploy() (error) {
 	blockchain, err := ethclient.Dial("http://127.0.0.1:7545")
 	if err != nil {
-		log.Fatalf("Unable to connect to network:%v \n", err)
+		log.Error("Unable to connect to network:%v \n", err)
 		return err
 	}
 
 	// 合约部署
 	auth, err := bind.NewTransactor(strings.NewReader(KEY), PASSWORD)
 	if err != nil {
-		log.Fatalf("Failed to create authorized transactor:%v \n", err)
+		log.Error("Failed to create authorized transactor:%v \n", err)
 		return err
 	}
 
-	fmt.Printf("address: %s\n", auth.From.String())
+	log.Info("address: %s\n", auth.From.String())
 	address, _, _, err := contracts.DeployDataStorage(
 		auth,
 		blockchain,
 	)
 	if err != nil {
-		log.Fatalf("deploy %v \n", err)
+		log.Error("deploy %v \n", err)
 		return err
 	}
 
-	fmt.Printf("Contract pending deploy:0x%x \n", address)
+	log.Info("Contract pending deploy:0x%x \n", address)
 
 	return err
 }
@@ -52,19 +51,19 @@ func deploy() (error) {
 func ContractSetDidChainAddr(did, _didChainAddr string) error {
 	blockchain, err := ethclient.Dial(URL)
 	if err != nil {
-		log.Fatalf("Unable to connect to network:%v \n", err)
+		log.Error("Unable to connect to network:%v \n", err)
 		return err
 	}
 
 	contract, err := contracts.NewDataStorage(common.HexToAddress(CONTRACT_ADDRESS), blockchain)
 	if err != nil {
-		log.Fatalf("conn contract: %v \n", err)
+		log.Error("conn contract: %v \n", err)
 		return err
 	}
 
 	auth, err := bind.NewTransactor(strings.NewReader(KEY), PASSWORD)
 	if err != nil {
-		log.Fatalf("Failed to create authorized transactor:%v \n", err)
+		log.Error("Failed to create authorized transactor:%v \n", err)
 		return err
 	}
 
@@ -74,29 +73,29 @@ func ContractSetDidChainAddr(did, _didChainAddr string) error {
 		Value:  nil,
 	}, did, _didChainAddr)
 	if err != nil {
-		log.Fatalf("set did chain addr: %v \n", err)
+		log.Error("set did chain addr: %v \n", err)
 		return err
 	}
-	fmt.Printf("tx sent: %s \n", tx.Hash().Hex())
+	log.Info("tx sent: %s \n", tx.Hash().Hex())
 	return nil
 }
 
 func ContractFindDidChainAddr(did string) (string, error) {
 	blockchain, err := ethclient.Dial(URL)
 	if err != nil {
-		log.Fatalf("Unable to connect to network:%v \n", err)
+		log.Error("Unable to connect to network:%v \n", err)
 		return "", err
 	}
 
 	contract, err := contracts.NewDataStorage(common.HexToAddress(CONTRACT_ADDRESS), blockchain)
 	if err != nil {
-		log.Fatalf("conn contract: %v \n", err)
+		log.Error("conn contract: %v \n", err)
 		return "", err
 	}
 
 	ethAddress, err := contract.GetDidChainAddr(&bind.CallOpts{Pending: true}, did)
 	if err != nil {
-		log.Fatalf("Failed to get did ethAddress:%v \n", err)
+		log.Error("Failed to get did ethAddress:%v \n", err)
 		return "", err
 	}
 
@@ -106,19 +105,19 @@ func ContractFindDidChainAddr(did string) (string, error) {
 func ContractSetDidClaimHash(claimId, _didClaimHash string) error {
 	blockchain, err := ethclient.Dial(URL)
 	if err != nil {
-		log.Fatalf("Unable to connect to network:%v \n", err)
+		log.Error("Unable to connect to network:%v \n", err)
 		return err
 	}
 
 	contract, err := contracts.NewDataStorage(common.HexToAddress(CONTRACT_ADDRESS), blockchain)
 	if err != nil {
-		log.Fatalf("conn contract: %v \n", err)
+		log.Error("conn contract: %v \n", err)
 		return err
 	}
 
 	auth, err := bind.NewTransactor(strings.NewReader(KEY), PASSWORD)
 	if err != nil {
-		log.Fatalf("Failed to create authorized transactor:%v \n", err)
+		log.Error("Failed to create authorized transactor:%v \n", err)
 		return err
 	}
 
@@ -128,29 +127,29 @@ func ContractSetDidClaimHash(claimId, _didClaimHash string) error {
 		Value:  nil,
 	}, claimId, _didClaimHash)
 	if err != nil {
-		log.Fatalf("set did claim: %v \n", err)
+		log.Error("set did claim: %v \n", err)
 		return err
 	}
-	fmt.Printf("tx sent: %s \n", tx.Hash().Hex())
+	log.Info("tx sent: %s \n", tx.Hash().Hex())
 	return nil
 }
 
 func ContractFindDidClaimHash(claimId string) (string, error) {
 	blockchain, err := ethclient.Dial(URL)
 	if err != nil {
-		log.Fatalf("Unable to connect to network:%v \n", err)
+		log.Error("Unable to connect to network:%v \n", err)
 		return "", err
 	}
 
 	contract, err := contracts.NewDataStorage(common.HexToAddress(CONTRACT_ADDRESS), blockchain)
 	if err != nil {
-		log.Fatalf("conn contract: %v \n", err)
+		log.Error("conn contract: %v \n", err)
 		return "", err
 	}
 
 	claimHash, err := contract.GetDidClaimHash(&bind.CallOpts{Pending: true}, claimId)
 	if err != nil {
-		log.Fatalf("Failed to get did claim :%v \n", err)
+		log.Error("Failed to get did claim :%v \n", err)
 		return "", err
 	}
 
@@ -160,19 +159,19 @@ func ContractFindDidClaimHash(claimId string) (string, error) {
 func ContractSetDidDocumentHash(did, _didDocumentHash string) error {
 	blockchain, err := ethclient.Dial(URL)
 	if err != nil {
-		log.Fatalf("Unable to connect to network:%v \n", err)
+		log.Error("Unable to connect to network:%v \n", err)
 		return err
 	}
 
 	contract, err := contracts.NewDataStorage(common.HexToAddress(CONTRACT_ADDRESS), blockchain)
 	if err != nil {
-		log.Fatalf("conn contract: %v \n", err)
+		log.Error("conn contract: %v \n", err)
 		return err
 	}
 
 	auth, err := bind.NewTransactor(strings.NewReader(KEY), PASSWORD)
 	if err != nil {
-		log.Fatalf("Failed to create authorized transactor:%v \n", err)
+		log.Error("Failed to create authorized transactor:%v \n", err)
 		return err
 	}
 
@@ -182,29 +181,29 @@ func ContractSetDidDocumentHash(did, _didDocumentHash string) error {
 		Value:  nil,
 	}, did, _didDocumentHash)
 	if err != nil {
-		log.Fatalf("set did document: %v \n", err)
+		log.Error("set did document: %v \n", err)
 		return err
 	}
-	fmt.Printf("tx sent: %s \n", tx.Hash().Hex())
+	log.Info("tx sent: %s \n", tx.Hash().Hex())
 	return nil
 }
 
 func ContractFindDidDocumentHash(did string) (string, error) {
 	blockchain, err := ethclient.Dial(URL)
 	if err != nil {
-		log.Fatalf("Unable to connect to network:%v \n", err)
+		log.Error("Unable to connect to network:%v \n", err)
 		return "", err
 	}
 
 	contract, err := contracts.NewDataStorage(common.HexToAddress(CONTRACT_ADDRESS), blockchain)
 	if err != nil {
-		log.Fatalf("conn contract: %v \n", err)
+		log.Error("conn contract: %v \n", err)
 		return "", err
 	}
 
 	documentHash, err := contract.GetDidDocumentHash(&bind.CallOpts{Pending: true}, did)
 	if err != nil {
-		log.Fatalf("Failed to get did ethAddress:%v \n", err)
+		log.Error("Failed to get did ethAddress:%v \n", err)
 		return "", err
 	}
 
@@ -214,19 +213,19 @@ func ContractFindDidDocumentHash(did string) (string, error) {
 func ContractSetDidPublicKey(did, _didPublicKey string) error {
 	blockchain, err := ethclient.Dial(URL)
 	if err != nil {
-		log.Fatalf("Unable to connect to network:%v \n", err)
+		log.Error("Unable to connect to network:%v \n", err)
 		return err
 	}
 
 	contract, err := contracts.NewDataStorage(common.HexToAddress(CONTRACT_ADDRESS), blockchain)
 	if err != nil {
-		log.Fatalf("conn contract: %v \n", err)
+		log.Error("conn contract: %v \n", err)
 		return err
 	}
 
 	auth, err := bind.NewTransactor(strings.NewReader(KEY), PASSWORD)
 	if err != nil {
-		log.Fatalf("Failed to create authorized transactor:%v \n", err)
+		log.Error("Failed to create authorized transactor:%v \n", err)
 		return err
 	}
 
@@ -236,29 +235,29 @@ func ContractSetDidPublicKey(did, _didPublicKey string) error {
 		Value:  nil,
 	}, did, _didPublicKey)
 	if err != nil {
-		log.Fatalf("set did public key: %v \n", err)
+		log.Error("set did public key: %v \n", err)
 		return err
 	}
-	fmt.Printf("tx sent: %s \n", tx.Hash().Hex())
+	log.Info("tx sent: %s \n", tx.Hash().Hex())
 	return nil
 }
 
 func ContractFindDidPublicKey(did string) (string, error) {
 	blockchain, err := ethclient.Dial(URL)
 	if err != nil {
-		log.Fatalf("Unable to connect to network:%v \n", err)
+		log.Error("Unable to connect to network:%v \n", err)
 		return "", err
 	}
 
 	contract, err := contracts.NewDataStorage(common.HexToAddress(CONTRACT_ADDRESS), blockchain)
 	if err != nil {
-		log.Fatalf("conn contract: %v \n", err)
+		log.Error("conn contract: %v \n", err)
 		return "", err
 	}
 
 	publicKey, err := contract.GetDidPublicKey(&bind.CallOpts{Pending: true}, did)
 	if err != nil {
-		log.Fatalf("Failed to get did ethAddress:%v \n", err)
+		log.Error("Failed to get did ethAddress:%v \n", err)
 		return "", err
 	}
 
@@ -269,19 +268,19 @@ func ContractFindDidPublicKey(did string) (string, error) {
 func ContractSetTransaction(txId string, fromAddr string, toAddr string, amount int64) error {
 	blockchain, err := ethclient.Dial(URL)
 	if err != nil {
-		log.Fatalf("Unable to connect to network:%v \n", err)
+		log.Error("Unable to connect to network:%v \n", err)
 		return err
 	}
 
 	contract, err := contracts.NewDataStorage(common.HexToAddress(CONTRACT_ADDRESS), blockchain)
 	if err != nil {
-		log.Fatalf("conn contract: %v \n", err)
+		log.Error("conn contract: %v \n", err)
 		return err
 	}
 
 	auth, err := bind.NewTransactor(strings.NewReader(KEY), PASSWORD)
 	if err != nil {
-		log.Fatalf("Failed to create authorized transactor:%v \n", err)
+		log.Error("Failed to create authorized transactor:%v \n", err)
 		return err
 	}
 
@@ -292,29 +291,29 @@ func ContractSetTransaction(txId string, fromAddr string, toAddr string, amount 
 	}, txId, fromAddr, toAddr, big.NewInt(amount))
 
 	if err != nil {
-		log.Fatalf("set transaciton err: %v \n", err)
+		log.Error("set transaciton err: %v \n", err)
 		return err
 	}
-	fmt.Printf("tx sent: %s \n", tx.Hash().Hex())
+	log.Info("tx sent: %s \n", tx.Hash().Hex())
 	return nil
 }
 
 func ContractFindTransaction(txId string) (string, string, int64, error) {
 	blockchain, err := ethclient.Dial(URL)
 	if err != nil {
-		log.Fatalf("Unable to connect to network:%v \n", err)
+		log.Error("Unable to connect to network:%v \n", err)
 		return "", "", 0, err
 	}
 
 	contract, err := contracts.NewDataStorage(common.HexToAddress(CONTRACT_ADDRESS), blockchain)
 	if err != nil {
-		log.Fatalf("conn contract: %v \n", err)
+		log.Error("conn contract: %v \n", err)
 		return "", "", 0, err
 	}
 
 	fromAddr, toAddr, amount, err := contract.GetTransaction(&bind.CallOpts{Pending: true}, txId)
 	if err != nil {
-		log.Fatalf("Failed to get did ethAddress:%v \n", err)
+		log.Error("Failed to get did ethAddress:%v \n", err)
 		return "", "", 0, err
 	}
 

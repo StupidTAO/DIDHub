@@ -58,7 +58,7 @@ func TestContractWinningProposal(t *testing.T) {
 		t.Error(err.Error())
 		return
 	}
-	fmt.Printf("proposal id is: %d\n", proposal)
+	log.Info("proposal id is: %d\n", proposal)
 }
 
 func TestContractWinnerName(t *testing.T) {
@@ -67,7 +67,7 @@ func TestContractWinnerName(t *testing.T) {
 		t.Error(err.Error())
 		return
 	}
-	fmt.Printf("proposal winner name is: %s\n", winnerName)
+	log.Info("proposal winner name is: %s\n", winnerName)
 }
 
 func TestContractChairperson(t *testing.T) {
@@ -76,7 +76,7 @@ func TestContractChairperson(t *testing.T) {
 		t.Error(err.Error())
 		return
 	}
-	fmt.Printf("proposal winner name is: %s\n", chairPerson)
+	log.Info("proposal winner name is: %s\n", chairPerson)
 }
 
 func TestContractProposals(t *testing.T) {
@@ -85,7 +85,7 @@ func TestContractProposals(t *testing.T) {
 		t.Error(err.Error())
 		return
 	}
-	fmt.Printf("proposal name is: %s, voted count is: %d, proposal need funds is: %d\n", name, count, needFunds)
+	log.Info("proposal name is: %s, voted count is: %d, proposal need funds is: %d\n", name, count, needFunds)
 }
 
 func TestContractVoters(t *testing.T) {
@@ -94,5 +94,5 @@ func TestContractVoters(t *testing.T) {
 		t.Error(err.Error())
 		return
 	}
-	fmt.Printf("voter weight is: %d, voted is: %t, delegate is: %s, vote index is: %d\n", weight, voted, addr.Hex(), vote)
+	log.Info("voter weight is: %d, voted is: %t, delegate is: %s, vote index is: %d\n", weight, voted, addr.Hex(), vote)
 }

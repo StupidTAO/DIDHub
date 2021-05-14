@@ -8,14 +8,14 @@ import (
 func TestGetSHA256HashCode(t *testing.T) {
 	strByte := "peter"
 	hashCode := GetSHA256HashCode([]byte(strByte))
-	fmt.Printf("%x", hashCode)
+	log.Info("%x", hashCode)
 	t.Log("GetSHA256HashCode pass")
 }
 
 func TestGetRipemd160HashCode(t *testing.T) {
 	strByte := "peter"
 	hashCode := GetRipemd160HashCode([]byte(strByte))
-	fmt.Printf("%x", hashCode)
+	log.Info("%x", hashCode)
 	t.Log("GetSHA256HashCode pass")
 }
 
