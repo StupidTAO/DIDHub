@@ -23,7 +23,7 @@ func InitDB() *sqlx.DB {
 	// 数据源语法："用户名:密码@[连接方式](主机名:端口号)/数据库名"
 	database, err := sqlx.Open("mysql", _dataSourceName)
 	if err != nil {
-		fmt.Println("open mysql failed,", err)
+		log.Info("open mysql failed,", err)
 	}
 	DB = database
 	return DB
