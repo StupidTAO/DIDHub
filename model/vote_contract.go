@@ -14,7 +14,7 @@ import (
 
 const (
 	//投票合约
-	VOTE_CONTRACT_ADDRESS = "0xd238ee5e57a77fa1b4aaa49b56fc02aecff83966"
+	VOTE_CONTRACT_ADDRESS = "0xbfd3fb0fe7a89158c5aaffcafdc96b5bb9f55f24"
 )
 
 
