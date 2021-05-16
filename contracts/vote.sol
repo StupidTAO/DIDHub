@@ -59,7 +59,7 @@ contract Vote {
             !voters[voter].voted,
             "The voter already voted."
         );
-        require(voters[voter].weight == 0);
+
         voters[voter].weight = number;
     }
 
