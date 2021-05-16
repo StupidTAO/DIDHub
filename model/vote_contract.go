@@ -14,11 +14,12 @@ import (
 
 const (
 	//投票合约
-	VOTE_CONTRACT_ADDRESS = "0xd9c5150a3fa33d18b13d7b4a744213045103a0a5"
+	VOTE_CONTRACT_ADDRESS = "0xd238ee5e57a77fa1b4aaa49b56fc02aecff83966"
 )
 
 
 func deployVote() (error) {
+	log.LogInit()
 	blockchain, err := ethclient.Dial(URL)
 	if err != nil {
 		log.Error("Unable to connect to network:%v \n", err)
