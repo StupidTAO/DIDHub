@@ -1,5 +1,6 @@
 pragma solidity ^0.7.4;
 
+//gittest
 /// @title 委托投票
 contract Vote {
     // 这里声明了一个新的复合类型用于稍后的变量
